@@ -1,0 +1,221 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**style*/
+body{
+    font: 16px/28px arial, sans-serif;
+    background-image: url(gambar2.png);
+}
+.top-bar{
+ position: fixed;
+ top: 0;
+ left: 0;
+right: 0;
+height: 40px;
+background-color: lightcoral;
+z-index: 999;
+}
+
+.container {
+    width : 960px;
+    margin:80px auto;
+    background-color: #eaeaea;
+    position: relative;
+    margin-bottom: 10px;
+}
+.instagram {
+    width: 200px;
+    height: 200px;
+    background-image:url(instagram-ribbon.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    text-indent: -999999px;
+    position: relative;
+    top: -11px;
+    right: -870px;
+
+}
+.header{
+    padding: 20px;
+    
+}
+
+.header .Judul{
+    font-size: 30px;
+    font-weight:bold;
+}
+
+.header ul li{
+    display: inline-block;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+.header  a{
+    text-decoration: none;
+    color: sandybrown;
+}
+
+.header a:hover{
+    background-color: lightskyblue;
+    color: beige;
+}
+
+.hero {
+    height:440px;
+    background-image: url(repentand-seekchristjesus-nqSUnXINsp4-unsplash.jpg);
+    background-size: cover;
+    background-position: 0px -230px;
+    border-top: 5px  solid #eaeaea;
+    border-bottom: 5px solid #eaeaea;
+}
+
+.main {
+    width: 620px;
+    padding: 20px;
+    box-sizing: border-box;
+    float: left ;
+}
+.main h2{
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: -10px;
+
+}
+.main .Author{
+    font-size: 12px;
+    margin-top: -5px;
+    margin-bottom: 50px;
+
+}
+
+
+  
+.main h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.main p{
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main a{
+    text-decoration: none;
+    color: salmon;
+ 
+}
+
+.main a:hover{
+    background-color: lightskyblue;
+    color: beige;
+}
+
+.sidebar {
+    width:300px;
+    float:right;
+    padding: 20px;
+}
+
+
+.sidebar h5 {
+    font-weight: bold;
+    color: #666;
+
+}
+
+.sidebar img {
+    width: 100px;
+    height: 75px;
+    float: left;
+    padding-right: 20px;
+}
+
+.sidebar p {
+font:12px/18px arial ;
+
+}
+
+.footer {
+    background-color: #333;
+    padding: 10px;
+    margin-top: 30px;
+}
+.footer .copy {
+    color: #eaeaea;
+    text-align: center;
+    font-size: 12px; 
+
+}
+
+
+ 
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+ .cf:before,
+ .cf:after {
+     content: " "; /* 1 */
+     display: table; /* 2 */
+ }
+ 
+ .cf:after {
+     clear: both;
+ }
+ 
+ /**
+  * For IE 6/7 only
+  * Include this rule to trigger hasLayout and contain floats.
+  */
+ .cf {
+    zoom: 1;
+ }
