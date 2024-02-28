@@ -65,6 +65,7 @@ z-index: 999;
     position: relative;
     margin-bottom: 10px;
 }
+
 .instagram {
     width: 200px;
     height: 200px;
@@ -81,12 +82,12 @@ z-index: 999;
 .wa {
     width: 200px;
     height: 200px;
-    background-image:url();
+    background-image:url(wa.png);
     background-repeat: no-repeat;
     display: inline-block;
     text-indent: -999999px;
-    bottom: -45px;
-    left: -200px;
+    bottom: -55px;
+    left: 700px;
     position: absolute;
 
 }
