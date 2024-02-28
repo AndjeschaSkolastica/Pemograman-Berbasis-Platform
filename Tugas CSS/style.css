@@ -81,7 +81,7 @@ z-index: 999;
 .wa {
     width: 200px;
     height: 200px;
-    background-image:url(wa2.png);
+    background-image:url();
     background-repeat: no-repeat;
     display: inline-block;
     text-indent: -999999px;
