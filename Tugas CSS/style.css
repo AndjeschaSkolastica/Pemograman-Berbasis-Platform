@@ -79,15 +79,15 @@ z-index: 999;
 
 }
 
-.wa {
+.shopee {
     width: 200px;
     height: 200px;
-    background-image:url(wa.png);
+    background-image:url(shp.png);
     background-repeat: no-repeat;
     display: inline-block;
     text-indent: -999999px;
-    bottom: -55px;
-    left: 700px;
+    bottom: -50px;
+    left: 755px;
     position: absolute;
 
 }
