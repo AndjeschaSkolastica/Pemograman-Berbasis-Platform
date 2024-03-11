@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang ="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
   <title>Form Example</title>
-  <link rel="stylesheet" href="js.css" >
+  <link rel="stylesheet" type="text/css" href="js.css">
 </head>
 <body>
-  <script src ="java.js"></script>
     <div class="top-bar"></div>
     <div class="container">
         <div class="header">
             <hr>
-            <h1 class="Judul" align ="center">Hallo Selamat Datang </h1>
+            <h1 class="Judul">Hallo Selamat Datang </h1>
             <hr>
         </div>
-        <form id="myForm" style="display: flex;">
-            <div style="flex: 1;">
-                <label for="nama">Nama:</label>
-                <input type="text" id="nama" name="nama">
+        <form id="myForm">
+            <div>
+                <label for="nama">Nama :</label>
+                <input type="text" id="nama" name="nama" pattern="[A-Za-z\s]+" title="Nama harus menggunakan huruf" class="form-control">
             </div>
-            <div style="flex: 1;">
-                <label for="jumlahPilihan">Jumlah Pilihan:</label>
-                <input type="number" id="jumlahPilihan" name="jumlahPilihan" min="1" max="10">
+            <div>
+                <label for="jumlahPilihan">Jumlah Pilihan :</label>
+                <input type="number" id="jumlahPilihan" name="jumlahPilihan" min="1" max="10" class="form-control">
             </div>
             <input type="button" value="OK" onclick="displayInputs()">
         </form>
         <div id="inputContainer"></div>
         <div id="outputContainer"></div>
     </div>
+
+    <script src="jeje.js"></script>
 </body>
 </html>

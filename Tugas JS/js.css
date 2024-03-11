@@ -1,14 +1,14 @@
-body{
+body {
     font: 16px/28px arial, sans-serif;
     background-image: url(back.jpg);
 }
 
 .container {
-    width : 960px;
-    margin:70px auto;
+    width: 960px;
+    margin: 70px auto;
     background-color: #eaeaea;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
     padding: 20px;
 }
 
@@ -16,24 +16,18 @@ body{
     text-align: center;
 }
 
-.form-group {
+.form-control {
+    width: 100%;
+    display: block;
     margin-bottom: 10px;
 }
 
 label {
-    display: inline-block;
-    width: 140px;
+    display: block;
+    margin-bottom: 5px;
 }
 
-.form-control {
-    width: calc(100% - 140px);
-    display: inline-block;
-}
-
-#inputContainer {
-    margin-top: 20px;
-}
-
+#inputContainer,
 #outputContainer {
     margin-top: 20px;
 }
