@@ -1,0 +1,43 @@
+body{
+    font: 16px/28px arial, sans-serif;
+    background-image: url(back.jpg);
+}
+
+.container {
+    width : 960px;
+    margin:70px auto;
+    background-color: #eaeaea;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+}
+
+.form-control {
+    width: calc(100% - 140px);
+    display: inline-block;
+}
+
+#inputContainer {
+    margin-top: 20px;
+}
+
+#outputContainer {
+    margin-top: 20px;
+}
+
+.inputRow {
+    margin-bottom: 10px;
+}
