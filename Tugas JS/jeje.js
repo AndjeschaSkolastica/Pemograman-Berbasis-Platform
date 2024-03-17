@@ -8,6 +8,13 @@ function displayInputs() {
     const jumlahPilihan = parseInt(form.jumlahPilihan.value);
     const inputContainer = document.getElementById("inputContainer");
     const outputContainer = document.getElementById("outputContainer");
+    const okButton = document.querySelector('input[type="button"][value="OK"]');
+    const submitButton = document.createElement("input");
+    
+    // Disable nama input, jumlahPilihan input, and OK button
+    form.nama.disabled = true;
+    form.jumlahPilihan.disabled = true;
+    okButton.disabled = true;
 
     // Remove existing input rows
     while (inputContainer.firstChild) {
@@ -40,18 +47,20 @@ function displayInputs() {
         inputContainer.appendChild(inputRow);
 
         // Store options for later use
-        options.push(`Teks Pilihan ${i}`);
+        options.push(input);
     }
 
     // Create submit button
-    const submitButton = document.createElement("input");
     submitButton.type = "button";
     submitButton.value = "Submit";
     submitButton.onclick = function() {
         displayOutput(options);
+        // Submit button remains visible
+        options.forEach(option => option.disabled = true); // Disable all input options
     };
-
+    
     outputContainer.appendChild(submitButton);
+    
 }
 
 function displayOutput(options) {
@@ -64,6 +73,21 @@ function displayOutput(options) {
         outputContainer.removeChild(outputContainer.firstChild);
     }
 
+    // Create submit button
+    const submitButton = document.createElement("input");
+    submitButton.type = "button";
+    submitButton.value = "Submit";
+    submitButton.onclick = function() {
+        displayOutput(options);
+        // Disable submit button after it's clicked
+        submitButton.disabled = true;
+
+        // Submit button remains visible
+        options.forEach(option => option.disabled = true); // Disable all input options
+    };
+    
+    outputContainer.appendChild(submitButton);
+
     // Create radio buttons
     const radioContainer = document.createElement("div");
     radioContainer.className = "form-group";
@@ -72,18 +96,18 @@ function displayOutput(options) {
     radioLabel.textContent = "Pilih Salah Satu:";
     radioContainer.appendChild(radioLabel);
 
-    for (let option of options) {
+    for (let input of options) {
         const radioDiv = document.createElement("div");
 
         const radioButton = document.createElement("input");
         radioButton.type = "radio";
-        radioButton.id = option.replace(/\s+/g, "");
+        radioButton.id = input.id;
         radioButton.name = "selectedOption";
-        radioButton.value = option;
+        radioButton.value = input.value;
 
         const radioText = document.createElement("label");
-        radioText.textContent = option;
-        radioText.setAttribute("for", option.replace(/\s+/g, ""));
+        radioText.textContent = input.value;
+        radioText.setAttribute("for", input.id);
 
         radioDiv.appendChild(radioButton);
         radioDiv.appendChild(radioText);
@@ -92,4 +116,43 @@ function displayOutput(options) {
     }
 
     outputContainer.appendChild(radioContainer);
+
+    // Create additional submit button for final display
+    const finalSubmitButton = document.createElement("input");
+    finalSubmitButton.type = "button";
+    finalSubmitButton.value = "Final Submit";
+    finalSubmitButton.onclick = function() {
+        const selectedOption = document.querySelector('input[name="selectedOption"]:checked');
+        if (selectedOption) {
+            const selectedText = selectedOption.nextSibling.textContent;
+            const selectedValue = selectedOption.value;
+    
+            // Create the message to display
+            const message = `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${options.length} pilihan yaitu: `;
+            const choices = options.map(option => option.value).join(', ');
+            const finalMessage = `${message}${choices}, dan saya memilih ${selectedText}`;
+    
+            // Remove existing input and output elements
+            while (inputContainer.firstChild) {
+                inputContainer.removeChild(inputContainer.firstChild);
+            }
+    
+            while (outputContainer.firstChild) {
+                outputContainer.removeChild(outputContainer.firstChild);
+            }
+    
+            // Create a new paragraph element to display the final message
+            const finalParagraph = document.createElement('p');
+            finalParagraph.textContent = finalMessage;
+    
+            // Append the final message to the output container
+            outputContainer.appendChild(finalParagraph);
+        } else {
+            alert("Silakan pilih salah satu opsi.");
+        }
+    };
+    
+    
+
+    outputContainer.appendChild(finalSubmitButton);
 }
