@@ -5,25 +5,32 @@ document.addEventListener("DOMContentLoaded", function() {
 function displayInputs() {
     const form = document.getElementById("myForm");
     const nama = form.nama.value.trim();
+
+    // Error-trapping for Nama
+    if (!nama.match(/^[A-Za-z\s]+$/)) { // Check if nama contains only letters and spaces
+        alert("Nama harus berisi huruf saja. Mohon masukkan nama yang valid.");
+        return;
+    }
+
+    // Capitalize first letter of each word in nama
+    const capitalizedNama = nama.replace(/\b\w/g, c => c.toUpperCase());
+
+    // Update nama input value with capitalizedNama
+    form.nama.value = capitalizedNama;
+
     const jumlahPilihan = parseInt(form.jumlahPilihan.value);
+
+    // Error-trapping for jumlahPilihan
+    if (isNaN(jumlahPilihan)) {
+        alert("Input jumlah pilihan harus berupa angka. Mohon masukkan angka.");
+        return;
+    }
+
     const inputContainer = document.getElementById("inputContainer");
-    const outputContainer = document.getElementById("outputContainer");
-    const okButton = document.querySelector('input[type="button"][value="OK"]');
-    const submitButton = document.createElement("input");
-    
-    // Disable nama input, jumlahPilihan input, and OK button
-    form.nama.disabled = true;
-    form.jumlahPilihan.disabled = true;
-    okButton.disabled = true;
 
     // Remove existing input rows
     while (inputContainer.firstChild) {
         inputContainer.removeChild(inputContainer.firstChild);
-    }
-
-    // Remove existing output rows
-    while (outputContainer.firstChild) {
-        outputContainer.removeChild(outputContainer.firstChild);
     }
 
     // Create input rows
@@ -51,16 +58,35 @@ function displayInputs() {
     }
 
     // Create submit button
+    const submitButton = document.createElement("input");
     submitButton.type = "button";
     submitButton.value = "Submit";
-    submitButton.onclick = function() {
+
+    submitButton.addEventListener("click", function() {
+        const isFilled = options.every(option => option.value.trim() !== "");
+        if (!isFilled) {
+            alert("Semua pilihan harus diisi. Mohon lengkapi semua pilihan.");
+            return;
+        }
         displayOutput(options);
         // Submit button remains visible
         options.forEach(option => option.disabled = true); // Disable all input options
-    };
-    
+        submitButton.disabled = true; // Disable submit button
+    });
+
+    // Disable nama input, jumlahPilihan input, and OK button
+    form.nama.disabled = true;
+    form.jumlahPilihan.disabled = true;
+    document.querySelector('input[type="button"][value="OK"]').disabled = true;
+
+    const outputContainer = document.getElementById("outputContainer");
+
+    // Remove existing output rows
+    while (outputContainer.firstChild) {
+        outputContainer.removeChild(outputContainer.firstChild);
+    }
+
     outputContainer.appendChild(submitButton);
-    
 }
 
 function displayOutput(options) {
@@ -73,24 +99,9 @@ function displayOutput(options) {
         outputContainer.removeChild(outputContainer.firstChild);
     }
 
-    // Create submit button
-    const submitButton = document.createElement("input");
-    submitButton.type = "button";
-    submitButton.value = "Submit";
-    submitButton.onclick = function() {
-        displayOutput(options);
-        // Disable submit button after it's clicked
-        submitButton.disabled = true;
-
-        // Submit button remains visible
-        options.forEach(option => option.disabled = true); // Disable all input options
-    };
-    
-    outputContainer.appendChild(submitButton);
-
     // Create radio buttons
     const radioContainer = document.createElement("div");
-    radioContainer.className = "form-group";
+    radioContainer.className = "form-group radioContainer";
 
     const radioLabel = document.createElement("label");
     radioLabel.textContent = "Pilih Salah Satu:";
@@ -124,35 +135,41 @@ function displayOutput(options) {
     finalSubmitButton.onclick = function() {
         const selectedOption = document.querySelector('input[name="selectedOption"]:checked');
         if (selectedOption) {
-            const selectedText = selectedOption.nextSibling.textContent;
-            const selectedValue = selectedOption.value;
+            const options = [];
+            const jumlahPilihan = parseInt(document.getElementById("jumlahPilihan").value);
     
-            // Create the message to display
-            const message = `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${options.length} pilihan yaitu: `;
-            const choices = options.map(option => option.value).join(', ');
-            const finalMessage = `${message}${choices}, dan saya memilih ${selectedText}`;
-    
-            // Remove existing input and output elements
-            while (inputContainer.firstChild) {
-                inputContainer.removeChild(inputContainer.firstChild);
+            for (let i = 1; i <= jumlahPilihan; i++) {
+                options.push(document.getElementById(`teksPilihan${i}`).value);
             }
     
-            while (outputContainer.firstChild) {
-                outputContainer.removeChild(outputContainer.firstChild);
+            const message = `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${jumlahPilihan} pilihan yaitu: `;
+            const finalMessage = `${message}${options.join(', ')}, dan saya memilih ${selectedOption.nextSibling.textContent}`;
+    
+            // Remove form and output elements
+            form.style.display = "none";
+            outputContainer.style.display = "none";
+
+            // Remove input rows
+            const inputContainer = document.getElementById("inputContainer");
+            while (inputContainer.firstChild) {
+                inputContainer.removeChild(inputContainer.firstChild);
             }
     
             // Create a new paragraph element to display the final message
             const finalParagraph = document.createElement('p');
             finalParagraph.textContent = finalMessage;
     
-            // Append the final message to the output container
-            outputContainer.appendChild(finalParagraph);
+            // Insert the final message below the "header" element
+            const header = document.querySelector('.header');
+            header.parentNode.insertBefore(finalParagraph, header.nextSibling);
         } else {
             alert("Silakan pilih salah satu opsi.");
         }
     };
-    
-    
 
     outputContainer.appendChild(finalSubmitButton);
+
+    
 }
+
+

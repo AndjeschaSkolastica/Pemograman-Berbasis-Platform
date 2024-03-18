@@ -15,9 +15,15 @@ body {
 .header {
     text-align: center;
 }
+.header img {
+    width: 100px; /* Sesuaikan ukuran sesuai kebutuhan */
+    height: 100px; /* Sesuaikan ukuran sesuai kebutuhan */
+    border-radius: 50%; /* Agar gambar bundar */
+    margin-bottom: 10px;
+}
 
 .form-control {
-    width: 100%;
+    width: 300px;
     display: block;
     margin-bottom: 10px;
 }
@@ -27,6 +33,25 @@ label {
     margin-bottom: 5px;
 }
 
+/* CSS untuk mengatur tata letak elemen di sebelah kiri dari kotak input */
+.labelInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: 400px;
+}
+
+.labelInputContainer label {
+    flex: 0 0 120px; /* Lebar tetap untuk label */
+    text-align: right; /* Arahkan teks label ke kanan */
+    margin-right: 10px; /* Jarak antara label dan kotak input */
+}
+
+.labelInputContainer input {
+    flex: 1; /* Kotak input menempati sisa ruang yang tersedia */
+}
+
 #inputContainer,
 #outputContainer {
     margin-top: 20px;
@@ -34,4 +59,18 @@ label {
 
 .inputRow {
     margin-bottom: 10px;
+}
+
+.radioContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.radioContainer div {
+    display: flex;
+    align-items: center;
+}
+
+.radioContainer label {
+    margin-left: 10px; /* Atur jarak antara radio button dan teks */
 }
