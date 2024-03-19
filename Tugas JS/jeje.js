@@ -40,12 +40,12 @@ function displayInputs() {
         inputRow.className = "inputRow";
 
         const label = document.createElement("label");
-        label.textContent = `Teks Pilihan ${i}:`;
+        label.textContent = `Pilihan ${i}:`;
 
         const input = document.createElement("input");
         input.type = "text";
-        input.id = `teksPilihan${i}`;
-        input.name = `teksPilihan${i}`;
+        input.id = `Pilihan${i}`;
+        input.name = `Pilihan${i}`;
         input.className = "form-control";
 
         inputRow.appendChild(label);
@@ -139,7 +139,7 @@ function displayOutput(options) {
             const jumlahPilihan = parseInt(document.getElementById("jumlahPilihan").value);
     
             for (let i = 1; i <= jumlahPilihan; i++) {
-                options.push(document.getElementById(`teksPilihan${i}`).value);
+                options.push(document.getElementById(`Pilihan${i}`).value);
             }
     
             const message = `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${jumlahPilihan} pilihan yaitu: `;

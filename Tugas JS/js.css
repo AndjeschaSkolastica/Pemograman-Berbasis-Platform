@@ -1,12 +1,12 @@
 body {
     font: 16px/28px arial, sans-serif;
-    background-image: url(back.jpg);
+    background-image: url(Coral.jpg);
 }
 
 .container {
-    width: 960px;
+    width: 500px;
     margin: 70px auto;
-    background-color: #eaeaea;
+    background-color: rgb(241, 197, 179);
     position: relative;
     margin-bottom: 100px;
     padding: 20px;
@@ -15,10 +15,11 @@ body {
 .header {
     text-align: center;
 }
+
 .header img {
-    width: 100px; /* Sesuaikan ukuran sesuai kebutuhan */
-    height: 100px; /* Sesuaikan ukuran sesuai kebutuhan */
-    border-radius: 50%; /* Agar gambar bundar */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin-bottom: 10px;
 }
 
@@ -33,7 +34,6 @@ label {
     margin-bottom: 5px;
 }
 
-/* CSS untuk mengatur tata letak elemen di sebelah kiri dari kotak input */
 .labelInputContainer {
     display: flex;
     align-items: center;
@@ -43,13 +43,13 @@ label {
 }
 
 .labelInputContainer label {
-    flex: 0 0 120px; /* Lebar tetap untuk label */
-    text-align: right; /* Arahkan teks label ke kanan */
-    margin-right: 10px; /* Jarak antara label dan kotak input */
+    flex: 0 0 120px;
+    text-align: left;
+    margin-right: 10px;
 }
 
 .labelInputContainer input {
-    flex: 1; /* Kotak input menempati sisa ruang yang tersedia */
+    flex: 1;
 }
 
 #inputContainer,
@@ -72,5 +72,15 @@ label {
 }
 
 .radioContainer label {
-    margin-left: 10px; /* Atur jarak antara radio button dan teks */
+    margin-left: 10px;
 }
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.buttons-container input[type="button"] {
+    width: 4;
+} 
