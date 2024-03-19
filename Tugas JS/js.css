@@ -23,6 +23,19 @@ body {
     margin-bottom: 10px;
 }
 
+@keyframes swivelAnimation {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.Judul {
+    animation: swivelAnimation 5s infinite;
+    transform-origin: center;
+}
 .form-control {
     width: 300px;
     display: block;
