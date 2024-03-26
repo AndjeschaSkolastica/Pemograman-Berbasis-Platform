@@ -4,20 +4,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displayInputs() {
   const form = document.getElementById("myForm");
-  const nama = form.nama.value.trim();
+  const namaDepan = form.namaDepan.value.trim();
+  const namaBelakang = form.namaBelakang.value.trim();
+  const email = form.email.value.trim();
 
-  // Error-trapping for Nama
-  if (!nama.match(/^[A-Za-z\s]+$/)) {
-    // Check if nama contains only letters and spaces
-    alert("Nama harus berisi huruf saja. Mohon masukkan nama yang valid.");
+  // Error-trapping for Nama Depan
+  if (!namaDepan.match(/^[A-Za-z\s]+$/)) {
+    // Check if namaDepan contains only letters and spaces
+    alert("Nama Depan harus berisi huruf saja. Mohon masukkan nama yang valid.");
     return;
   }
 
-  // Capitalize first letter of each word in nama
-  const capitalizedNama = nama.replace(/\b\w/g, (c) => c.toUpperCase());
+  // Error-trapping for Nama Belakang
+  if (!namaBelakang.match(/^[A-Za-z\s]+$/)) {
+    // Check if namaBelakang contains only letters and spaces
+    alert("Nama Belakang harus berisi huruf saja. Mohon masukkan nama yang valid.");
+    return;
+  }
 
-  // Update nama input value with capitalizedNama
-  form.nama.value = capitalizedNama;
+  // Error-trapping for Email
+  if (!email.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+    alert("Email tidak valid. Mohon masukkan email yang valid.");
+    return;
+  }
 
   const jumlahPilihan = parseInt(form.jumlahPilihan.value);
 
@@ -45,7 +54,6 @@ function displayInputs() {
 
     const input = document.createElement("input");
     input.type = "text";
-    input.id = `Pilihan${i}`;
     input.name = `Pilihan${i}`;
     input.className = "form-control";
 
@@ -69,14 +77,16 @@ function displayInputs() {
       alert("Semua pilihan harus diisi. Mohon lengkapi semua pilihan.");
       return;
     }
-    displayOutput(options);
+    displayOutput(options, namaDepan, namaBelakang, email);
     // Submit button remains visible
     options.forEach((option) => (option.disabled = true)); // Disable all input options
     submitButton.disabled = true; // Disable submit button
   });
 
-  // Disable nama input, jumlahPilihan input, and OK button
-  form.nama.disabled = true;
+  // Disable namaDepan input, namaBelakang input, email input, jumlahPilihan input, and OK button
+  form.namaDepan.disabled = true;
+  form.namaBelakang.disabled = true;
+  form.email.disabled = true;
   form.jumlahPilihan.disabled = true;
   document.querySelector('input[type="button"][value="OK"]').disabled = true;
 
@@ -90,9 +100,8 @@ function displayInputs() {
   outputContainer.appendChild(submitButton);
 }
 
-function displayOutput(options) {
+function displayOutput(options, namaDepan, namaBelakang, email) {
   const form = document.getElementById("myForm");
-  const nama = form.nama.value.trim();
   const outputContainer = document.getElementById("outputContainer");
 
   // Remove existing output rows
@@ -100,51 +109,51 @@ function displayOutput(options) {
     outputContainer.removeChild(outputContainer.firstChild);
   }
 
-  // Create radio buttons
-  const radioContainer = document.createElement("div");
-  radioContainer.className = "form-group radioContainer";
+  // Create checkbox options
+  const checkboxContainer = document.createElement("div");
+  checkboxContainer.className = "form-group checkboxContainer";
 
-  const radioLabel = document.createElement("label");
-  radioLabel.textContent = "Pilih Salah Satu:";
-  radioContainer.appendChild(radioLabel);
+  const checkboxLabel = document.createElement("label");
+  checkboxLabel.textContent = "Pilih Salah Satu atau Lebih:";
+  checkboxContainer.appendChild(checkboxLabel);
 
   for (let input of options) {
-    const radioDiv = document.createElement("div");
+    const checkboxDiv = document.createElement("div");
+    checkboxDiv.className = "checkboxDiv";
 
-    const radioButton = document.createElement("input");
-    radioButton.type = "radio";
-    radioButton.id = input.id;
-    radioButton.name = "selectedOption";
-    radioButton.value = input.value;
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = "selectedOptions[]";
+    checkbox.className = "checkbox-input";
 
-    const radioText = document.createElement("label");
-    radioText.textContent = input.value;
-    radioText.setAttribute("for", input.id);
+    const label = document.createElement("label");
+    label.textContent = input.value;
 
-    radioDiv.appendChild(radioButton);
-    radioDiv.appendChild(radioText);
+    checkboxDiv.appendChild(checkbox);
+    checkboxDiv.appendChild(label);
 
-    radioContainer.appendChild(radioDiv);
+    checkboxContainer.appendChild(checkboxDiv);
   }
 
-  outputContainer.appendChild(radioContainer);
+  outputContainer.appendChild(checkboxContainer);
 
   // Create additional submit button for final display
   const finalSubmitButton = document.createElement("input");
   finalSubmitButton.type = "button";
   finalSubmitButton.value = "Final Submit";
   finalSubmitButton.onclick = function () {
-    const selectedOption = document.querySelector('input[name="selectedOption"]:checked');
-    if (selectedOption) {
+    const selectedOptions = document.querySelectorAll('input[name="selectedOptions[]"]:checked');
+    if (selectedOptions.length > 0) {
+      const selectedValues = Array.from(selectedOptions).map((option) => option.parentNode.textContent.trim());
       const options = [];
       const jumlahPilihan = parseInt(document.getElementById("jumlahPilihan").value);
 
       for (let i = 1; i <= jumlahPilihan; i++) {
-        options.push(document.getElementById(`Pilihan${i}`).value);
+        options.push(document.querySelector(`input[name="Pilihan${i}"]`).value);
       }
 
-      const message = `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${jumlahPilihan} pilihan yaitu: `;
-      const finalMessage = `${message}${options.join(", ")}, dan saya memilih ${selectedOption.nextSibling.textContent}`;
+      const message = `Hallo, nama saya ${namaDepan} ${namaBelakang}, dengan email ${email}, saya mempunyai sejumlah ${jumlahPilihan} pilihan hobby yaitu: `;
+      const finalMessage = `${message}${options.join(", ")}, dan saya menyukai ${selectedValues.join(", ")}`;
 
       // Remove form and output elements
       form.style.display = "none";
@@ -164,7 +173,7 @@ function displayOutput(options) {
       const header = document.querySelector(".header");
       header.parentNode.insertBefore(finalParagraph, header.nextSibling);
     } else {
-      alert("Silakan pilih salah satu opsi.");
+      alert("Silakan pilih setidaknya satu opsi.");
     }
   };
 

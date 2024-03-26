@@ -1,0 +1,106 @@
+body {
+  background-color: #fffdd0;
+}
+
+footer {
+  background-color: #8fbc8f;
+}
+.jumbotron {
+  padding-top: 0rem;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+.slide-from-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 1.5s forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-animation {
+  animation: fadeIn 1.9s ease forwards;
+}
+
+.form-control {
+  width: 300px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.labelInputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  width: 400px;
+}
+
+.labelInputContainer label {
+  flex: 0 0 120px;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.labelInputContainer input {
+  flex: 1;
+}
+
+#inputContainer,
+#outputContainer {
+  margin-top: 20px;
+}
+
+.inputRow {
+  margin-bottom: 10px;
+}
+.checkboxDiv {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-input {
+  margin-right: 5px;
+}
+
+.checkboxDiv label {
+  margin-right: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 200px;
+}
+
+.buttons-container input[type="button"] {
+  width: 4;
+}
