@@ -1,3 +1,5 @@
+Catatan Source Code
+Source Code semisalnya Form tidak ingin ditampilkan ketika Final Submit diklik dan ketika setiap elemen di nonaktifkan ketika tombol pengaturnya di klik
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("generateInputs").addEventListener("click", displayInputs);
 });
@@ -83,7 +85,13 @@ function displayInputs() {
     submitButton.disabled = true; // Disable submit button
   });
 
-  // Add submit button without disabling form elements
+  // Disable namaDepan input, namaBelakang input, email input, jumlahPilihan input, and OK button
+  form.namaDepan.disabled = true;
+  form.namaBelakang.disabled = true;
+  form.email.disabled = true;
+  form.jumlahPilihan.disabled = true;
+  document.querySelector('input[type="button"][value="OK"]').disabled = true;
+
   const outputContainer = document.getElementById("outputContainer");
 
   // Remove existing output rows
@@ -149,12 +157,23 @@ function displayOutput(options, namaDepan, namaBelakang, email) {
       const message = `Hallo, nama saya ${namaDepan} ${namaBelakang}, dengan email ${email}, saya mempunyai sejumlah ${jumlahPilihan} pilihan hobby yaitu: `;
       const finalMessage = `${message}${options.join(", ")}, dan saya menyukai ${selectedValues.join(", ")}`;
 
+      // Remove form and output elements
+      form.style.display = "none";
+      outputContainer.style.display = "none";
+
+      // Remove input rows
+      const inputContainer = document.getElementById("inputContainer");
+      while (inputContainer.firstChild) {
+        inputContainer.removeChild(inputContainer.firstChild);
+      }
+
       // Create a new paragraph element to display the final message
       const finalParagraph = document.createElement("p");
       finalParagraph.textContent = finalMessage;
-      finalParagraph.style.marginTop = "20px";
-      // Insert the final message below the form
-      outputContainer.appendChild(finalParagraph);
+
+      // Insert the final message below the "header" element
+      const header = document.querySelector(".header");
+      header.parentNode.insertBefore(finalParagraph, header.nextSibling);
     } else {
       alert("Silakan pilih setidaknya satu opsi.");
     }
