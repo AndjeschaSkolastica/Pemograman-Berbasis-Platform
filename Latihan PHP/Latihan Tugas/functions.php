@@ -40,5 +40,28 @@ function hapus ($ID) {
 
 }
 
+function ubah ($data){
+    global $conn;
+    
+    $ID = $data["ID"];
+    $Nama = htmlspecialchars($data["Nama"]);
+    $NIM = htmlspecialchars($data["NIM"]);
+    $Email= htmlspecialchars($data["Email"]);
+    $Jurusan = htmlspecialchars($data["Jurusan"]);
+    $gambar = htmlspecialchars($data["gambar"]);
+
+      // query insert data
+      $query = "UPDATE  mahasiswa SET
+      Nama = '$Nama',
+      NIM = '$NIM',
+      Email = '$Email',
+      Jurusan = '$Jurusan',
+      gambar = '$gambar'
+    WHERE ID = $ID
+      ";
+
+  mysqli_query($conn, $query);
+  return mysqli_affected_rows($conn);
+}
 
 ?> 
