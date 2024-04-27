@@ -12,6 +12,7 @@ $mahasiswa = query("SELECT*FROM mahasiswa");
 </head>
 <body>
 <h1>Daftar Mahasiswa</h1>
+<a href="tambah.php">Tambah data Mahasiswa</a>
 <table border ="1" cellpadding = "10" cellspacing ="0">
     <tr>
         <th>No.</th>
@@ -29,7 +30,8 @@ $mahasiswa = query("SELECT*FROM mahasiswa");
         <td><?=$i; ?></td>
         <td>
             <a href="">ubah</a> |
-            <a href="">hapus</a>
+            <a href="hapus.php?ID= <?=  $row["ID"]; ?>" onclick="
+                 return confirm ('yakin akan menghapus data?'); " >hapus</a>
         </td>
         <td><img src="img/<?=  $row["gambar"]; ?>" width ="50" ></td>
         <td><?=$row["NIM"];?></td>
