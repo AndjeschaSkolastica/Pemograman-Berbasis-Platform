@@ -1,6 +1,6 @@
 <?php 
 // koneksi kedatabase
-$conn = mysqli_connect("localhost","root","","phpdasar");
+$conn = mysqli_connect("localhost","root","","tugas php");
 
 
 function query($query) {
@@ -17,15 +17,12 @@ function query($query) {
 function tambah($data){
   global $conn;
 
-  $Nama = htmlspecialchars($data["Nama"]);
-  $NIM = htmlspecialchars($data["NIM"]);
-  $Email= htmlspecialchars($data["Email"]);
-  $Jurusan = htmlspecialchars($data["Jurusan"]);
-  $gambar = htmlspecialchars($data["gambar"]);
+  $list = htmlspecialchars($data["list"]);
+
     // query insert data
-    $query = "INSERT INTO mahasiswa
+    $query = "INSERT INTO todo
     VALUES
-    ('', '$Nama', '$NIM','$Email','$Jurusan','$gambar')
+    ('','', '$list','')
     ";
 mysqli_query($conn, $query);
 return mysqli_affected_rows($conn);
@@ -33,36 +30,19 @@ return mysqli_affected_rows($conn);
 
 
 
-function hapus ($ID) {
+function hapus ($id) {
     global $conn;
-    mysqli_query($conn,"DELETE FROM mahasiswa WHERE ID = $ID" );
+    mysqli_query($conn,"DELETE FROM todo WHERE id = $id" );
     return mysqli_affected_rows($conn);
 
 
 }
 
-function ubah ($data){
+function ubahStatus($id, $status) {
     global $conn;
-    
-    $ID = $data["ID"];
-    $Nama = htmlspecialchars($data["Nama"]);
-    $NIM = htmlspecialchars($data["NIM"]);
-    $Email= htmlspecialchars($data["Email"]);
-    $Jurusan = htmlspecialchars($data["Jurusan"]);
-    $gambar = htmlspecialchars($data["gambar"]);
-
-      // query insert data
-      $query = "UPDATE  mahasiswa SET
-      Nama = '$Nama',
-      NIM = '$NIM',
-      Email = '$Email',
-      Jurusan = '$Jurusan',
-      gambar = '$gambar'
-    WHERE ID = $ID
-      ";
-
-  mysqli_query($conn, $query);
-  return mysqli_affected_rows($conn);
+    $query = "UPDATE todo SET status='$status' WHERE id='$id'";
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
 }
 
 function registrasi ($data){
@@ -101,5 +81,6 @@ mysqli_query($conn, "INSERT INTO users VALUES ('','$username','$password')");
 return mysqli_affected_rows($conn);
 
 }
+
 
 ?> 

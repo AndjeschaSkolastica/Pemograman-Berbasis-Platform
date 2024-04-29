@@ -5,6 +5,7 @@ if(isset($_SESSION["login"])) {
     exit;
 }
 require 'functions.php';
+
 if(isset($_POST["login"])){
 
  $username = $_POST["username"];
@@ -40,7 +41,7 @@ $error = true;
 </head>
 <body>
     <h1>Halaman Login</h1>
-
+    <a href="registrasi.php">Registrasi</a>
     <?php if (isset($error)): ?>
         <p style = "colour : red; font-style :italic;" > username / password salah </p>
     <?php endif;?>
