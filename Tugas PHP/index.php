@@ -58,7 +58,7 @@ $todo = mysqli_query($conn, "SELECT * FROM todo");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 
@@ -66,8 +66,8 @@ $todo = mysqli_query($conn, "SELECT * FROM todo");
     <h1 class="mb-4">ToDo List - <?php echo $username; ?></h1>
     <form action="" method="post">
         <div class="input-group mb-3">
-        <input type="text" class="form-control" style="max-width: 300px;" placeholder="Tambah tugas" name="list" maxlength="100" required>
-        <button class="btn btn-primary" type="submit" name="tambah">Tambah</button> 
+            <input type="text" class="form-control" style="max-width: 300px;" placeholder="Tambah tugas" name="list" maxlength="100" required>
+            <button class="btn btn-primary" type="submit" name="tambah">Tambah</button> 
         </div>
     </form>
 
@@ -80,8 +80,8 @@ $todo = mysqli_query($conn, "SELECT * FROM todo");
                     <del><?php echo $row['list']; ?></del>
                 <?php } ?>
                 <div>
-                    <a href="?selesai=<?php echo $row['id']; ?>&ID=<?php echo $id; ?>" class="btn btn-success me-2">Selesai</a>
-                    <a href="?hapus=<?php echo $row['id']; ?>&ID=<?php echo $id; ?>" class="btn btn-danger">Hapus</a>
+                    <a href="?selesai=<?php echo $row['id']; ?>&ID=<?php echo $id; ?>" class="btn btn-success me-2 w-auto">Selesai</a>
+                    <a href="?hapus=<?php echo $row['id']; ?>&ID=<?php echo $id; ?>" class="btn btn-danger w-auto">Hapus</a>
                 </div>
             </li>
         <?php endwhile; ?>
@@ -91,4 +91,4 @@ $todo = mysqli_query($conn, "SELECT * FROM todo");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
- 
+
