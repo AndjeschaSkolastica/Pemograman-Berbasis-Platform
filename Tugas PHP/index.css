@@ -1,14 +1,12 @@
 body {
   font: 16px/28px arial, sans-serif;
-  background-image: url(Coral.jpg); /* Tambahkan gambar latar belakang */
-  background-size: cover; /* Untuk memastikan gambar mengisi seluruh area latar belakang */
-  background-repeat: no-repeat; /* Agar gambar tidak diulang */
+  background-image: url(Coral.jpg);
 }
 
 .container {
   width: 500px;
   margin: 70px auto;
-  background-color: rgb(241, 197, 179); /* Tambahkan opacity pada warna latar belakang */
+  background-color: rgb(241, 197, 179);
   position: relative;
   margin-bottom: 100px;
   padding: 20px;

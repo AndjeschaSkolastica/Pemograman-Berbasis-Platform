@@ -88,8 +88,8 @@ if(isset($_POST["register"])){
             margin-bottom: 5px;
         }
         header img {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
         }

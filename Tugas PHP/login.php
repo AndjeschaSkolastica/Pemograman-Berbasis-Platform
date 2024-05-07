@@ -129,8 +129,8 @@ if(isset($_POST["login"])){
             margin-bottom: 5px;
         }
         header img {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -141,7 +141,7 @@ if(isset($_POST["login"])){
     <header>
         <h1>Yosepha Andjescha Skolastica</h1>
         <p>215314180</p>
-        <img src="jeje.jpg" alt="Andjescha">
+        <img src="jeje.jpg" alt="Andjescha" >
     </header>
 
     <div class="container">

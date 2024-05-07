@@ -86,6 +86,7 @@ $todo = mysqli_query($conn, "SELECT * FROM todo");
             </li>
         <?php endwhile; ?>
     </ul>
+    <a href="logout.php">Logout</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
