@@ -1,0 +1,16 @@
+Nama : Yosepha Andjescha Skolastica
+NIM  : 215314180
+
+a) Tabel todo
+    CREATE TABLE todo (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(1),
+    list VARCHAR(255),
+    status ENUM('aktif', 'selesai') DEFAULT 'aktif');
+
+
+b) Tabel users
+    CREATE TABLE users (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255));

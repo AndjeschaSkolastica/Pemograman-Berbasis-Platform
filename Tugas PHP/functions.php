@@ -57,6 +57,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['list'])) {
 }
 
 
+
+
+function hapus($id) {
+    global $conn;
+    mysqli_query($conn,"DELETE FROM todo WHERE id = $id");
+    return mysqli_affected_rows($conn);
+
+    
+}
+
 // Fungsi untuk mengubah status item to-do menjadi 'selesai'
 function selesai($id) {
     global $conn;
@@ -65,12 +75,6 @@ function selesai($id) {
     return mysqli_affected_rows($conn);
 
 
-}
-
-function hapus($id) {
-    global $conn;
-    mysqli_query($conn,"DELETE FROM todo WHERE id = $id");
-    return mysqli_affected_rows($conn);
 }
 
 function registrasi($data) {

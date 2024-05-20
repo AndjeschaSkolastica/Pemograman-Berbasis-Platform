@@ -1,0 +1,13 @@
+body {
+  font: 16px/28px arial, sans-serif;
+  background-image: url(Coral.jpg);
+}
+
+.container {
+  width: 500px;
+  margin: 70px auto;
+  background-color: rgb(241, 197, 179);
+  position: relative;
+  margin-bottom: 100px;
+  padding: 20px;
+}
